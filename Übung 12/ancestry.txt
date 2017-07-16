@@ -1,0 +1,41 @@
+
+%Individuen mit Geschlecht
+male(albert).
+male(berti).
+male(conrad).
+male(dennis).
+male(erich).
+male(fritz).
+
+female(beate).
+female(claudia).
+female(dora).
+female(eva).
+
+%Eindeutigkeit des Geschlechts
+female(X) :- not(male(X)).
+male(X) :- not(female(X)).
+
+%Elternschaftsbeziehungen
+parent(berti,albert).
+parent(beate,albert).
+
+parent(conrad,berti).
+parent(claudia,berti).
+
+parent(erich,conrad).
+parent(eva,conrad).
+
+parent(fritz,eva).
+
+parent(dennis,beate).
+parent(dora,beate).
+
+
+%neue Beziehungen
+father(X, Y) :- parent(X,Y), male(X).
+
+ancestor(X, Y) :- parent(X,Y).
+ancestor(X, Z) :- parent(X,Y), ancestor(Y,Z).
+
+female_ancestor(X,Y) :-ancestor(X,Y), female(X).
