@@ -1,0 +1,29 @@
+
+			%a)
+			
+|					 | ?- subt(s(X,Y), s(s(a,b), s(b,a))).	|
+|{X=s(a,b), Y=s(b,a)}| ?- .									|
+
+|					 | ?- subt(s(X,Y), s(s(a,b), s(b,a))).	|
+|					 | ?- subt(s(X,Y), s(a,b)).				|
+|{X=a, Y=b}			 | ?- .									|
+
+|					 | ?- subt(s(X,Y), s(s(a,b), s(b,a))).	|
+|					 | ?- subt(s(X,Y), s(b,a)).				|
+|{X=b, Y=a}			 | ?- .									|
+
+
+			%b)
+			
+|				| ?- subt(s(a,a), X).	|
+|				| ?- .					|
+
+|				| ?- subt(s(a,a), X).	|
+|{X=s(S1, T1)}	| ?- subt(s(a,a), S1).	|
+|{S1=s(a,a)		| ?- .					|
+
+|				| ?- subt(s(a,a), X).	|
+|{X=s(S1, T1)	| ?- subt(s(a,a), S1).	|
+|{T1=s(a,a)		| ?- .					|
+
+...
